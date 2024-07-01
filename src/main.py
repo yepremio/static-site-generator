@@ -1,8 +1,8 @@
-print("hello world")
-from textnode import textnode
+from textnode import textnode, text_type_bold
+
+def main():
+    node = TextNode(This is a text node, bold, https://www.boot.dev)
+    print(node)
 
 main()
-
-print(TextNode(This is a text node, bold, https://www.boot.dev))
-
 
