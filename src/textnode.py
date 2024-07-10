@@ -8,7 +8,6 @@ text_type_link = "link"
 text_type_image = "image"
 
 
-
 class TextNode:
     def __init__(self, text, text_type, url=None):
         self.text = text
@@ -21,6 +20,7 @@ class TextNode:
             and self.text == other.text
             and self.url == other.url
         )
+
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
 
