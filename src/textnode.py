@@ -24,6 +24,15 @@ class TextNode:
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
 
+def split_nodes_delimiter(old_nodes, delimiter, text_type):
+    result = []
+    for node in old_nodes:
+        if node == delimiter:
+        result.append(node)
+     raise Exception("Invalid markdown syntax")                
+
+
+
 # Function below takes input, if the input matches text_types then return
 # leafnode object instance.
 
