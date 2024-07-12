@@ -27,6 +27,8 @@ class TextNode:
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     result = []
     for node in old_nodes:
+        #test notes:with expression as target:
+            pass
         if node == delimiter:
         result.append(node)
      raise Exception("Invalid markdown syntax")                
