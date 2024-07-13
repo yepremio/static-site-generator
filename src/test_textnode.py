@@ -9,6 +9,7 @@ from textnode import (
     text_type_image,
     text_type_link,
     text_node_to_html_node,
+    split_nodes_delimiter
 )
 
 
@@ -60,7 +61,7 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, "b")
         self.assertEqual(html_node.value, "This is bold")
-        
+    
 
 if __name__ == "__main__":
     unittest.main()
