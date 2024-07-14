@@ -24,29 +24,6 @@ class TextNode:
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
 
-def split_nodes_delimiter(old_nodes, delimiter, text_type):
-    new_nodes = []
-    for node in old_nodes:
-        if node.text_type == text_type_text:
-            split_segments = node.text.split(delimiter)
-            if len(split_segments) % 2 == 0:
-                raise ValueError(f"Unmatched delimiter '{delimiter}' in text: {node.text}")
-
-            is_text = True
-            for segment in split_segments:
-                if is_text:
-                    new_nodes.append(TextNode(segment, text_type_text))
-                else:
-                    new_nodes.append(TextNode(segment, text_type))
-            is_text = False
-        else:
-            new_nodes.append(node)
-
-    
-    #raise Exception("Invalid markdown syntax")                
-
-
-
 # Function below takes input, if the input matches text_types then return
 # leafnode object instance.
 
