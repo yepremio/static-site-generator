@@ -10,6 +10,14 @@ from textnode import (
     text_type_link,
 )
 
+def markdown_to_blocks(markdown):
+    block_list = []
+    split_str = markdown.split('\n')
+    for str in split_str:
+        if str == '\n':
+            block_list.append(str)
+    print(block_list) 
+    return block_list
 
 def text_to_textnodes(text):
     nodes = [TextNode(text, text_type_text)]
