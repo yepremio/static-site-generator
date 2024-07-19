@@ -12,11 +12,12 @@ from textnode import (
 
 def markdown_to_blocks(markdown):
     block_list = []
-    split_str = markdown.split('\n')
+    split_str = markdown.split('\n\n')
     for str in split_str:
-        if str != '\n':
-            block_list.append(str.strip())
-    return block_list
+        if str != '\n\n':
+            block_list.append(str)
+    clean_list = [s for s in block_list if s.strip()]
+    return clean_list
 
 def text_to_textnodes(text):
     nodes = [TextNode(text, text_type_text)]
