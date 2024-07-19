@@ -14,9 +14,8 @@ def markdown_to_blocks(markdown):
     block_list = []
     split_str = markdown.split('\n')
     for str in split_str:
-        if str == '\n':
-            block_list.append(str)
-    print(block_list) 
+        if str != '\n':
+            block_list.append(str.strip())
     return block_list
 
 def text_to_textnodes(text):
