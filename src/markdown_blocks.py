@@ -19,28 +19,44 @@ def markdown_to_blocks(markdown):
         filtered_blocks.append(block)
     return filtered_blocks
 
-def block_to_block_type(markdown):
-    if markdown.startswith("#"):
-        count_hashes = 0
-        for char in markdown:
-            if char == "#":
-                count_hashes += 1
-            else:
-                break
-        if count_hashes <= 6 and markdown[count_hashes] == " ":
-            return block_type_heading
-    elif markdown.startswith("```") and markdown.endswith("```"):
+def block_to_block_type(block):
+    lines = block.split("\n")
+
+    if (
+        block.startswith("# ")
+        or block.startswith("## ")
+        or block.startswith("### ")
+        or block.startswith("#### ")
+        or block.startswith("##### ")
+        or block.startswith("###### ")
+    ):
+        return block_type_heading
+    if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
         return block_type_code
-    elif all(line.startswith(">") for line in markdown.split("\n")):
+    if block.startswith(">"):
+        for line in lines:
+            if not line.startswith(">"):
+                return block_type_paragraph
         return block_type_quote
-    elif all(line.startswith("* ") or line.startswith("- ") for line in markdown.split("\n")):
-        return block_type_ulist 
-    elif all(line.split(". ")[0].isdigit() and line.startswith(str(index) + ". ") for index, line in enumerate(markdown.split("\n"), start=1)):
+    if block.startswith("* "):
+        for line in lines:
+            if not line.startswith("* "):
+                return block_type_paragraph
+        return block_type_ulist
+    if block.startswith("- "):
+        for line in lines:
+            if not line.startswith("- "):
+                return block_type_paragraph
+        return block_type_ulist
+    if block.startswith("1. "):
+        i = 1
+        for line in lines:
+            if not line.startswith(f"{i}. "):
+                return block_type_paragraph
+            i += 1
         return block_type_olist
-    else:
-        return block_type_paragraph
-
-
+    return block_type_paragraph
+    
 def markdown_to_html_node(markdown):
     blocks = markdown_to_blocks(markdown)
     children = []
