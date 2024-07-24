@@ -12,6 +12,13 @@ def main():
     # os.path.join() joins path segments 
     # os.path.isfile()return true if path is an existing regular fil 
     #
+
+
+    shutil.rmtree()
+
+
+    shutil.copy() 
+
     copy all contents to dest dir but first
     del all contents in destination dir
     copy all files and subdir
@@ -20,4 +27,14 @@ def main():
     print(node)
 
 main()
+
+
+
+
+
+
+
+
+
+
 
