@@ -15,7 +15,8 @@ def main():
 
 
     shutil.rmtree()
-
+    
+    os.path.join()
 
     shutil.copy() 
 
