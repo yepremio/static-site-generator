@@ -12,6 +12,7 @@ def main():
     # os.path.join() joins path segments 
     # os.path.isfile()return true if path is an existing regular fil 
     #
+    os.path.isfile()
 
     os.path.exists 
     
