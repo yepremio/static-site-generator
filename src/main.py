@@ -1,39 +1,21 @@
-import shutil
 import os
+import shutil
+
+from copystatic import copy_static_contents
+
+dir_path_static = "./static"
+dir_path_public = "./public"
 
 def main():
+    print("Deleting Public Directory...")
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
 
-    def copy_static_contents(src, dst):
-        # Check to see if destination exists.
-        
-        if os.path.exists(dst):
-        # Remove dir and contents 
+    print("Copying static files to public directory...")
+    copy_static_contents(dir_path_static, dir_path_public)
 
-            shutil.rmtree(dst)
-
-        # Create destination dir.
-
-        os.mkdir(dst)
-
-        # recursive logic 
-
-        if not os.path.exists(src):
-            return src
-        
-        # logic
-        for item in os.listdir(src):
-            src_item = os.path.join(src, item)
-            dst_item = os.path.join(dst, item)
-
-            if os.path.isdir(src_item):
-                copy_static_contents(src_item, dst_item)
-            else:
-                shutil.copy(src_item, dst_item)
-                print(f"Copied {src_item} to {dst_item}")
-
-main()
-
-
+if __name__ == "__main__":
+    main()
 
 
 
