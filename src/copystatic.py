@@ -3,31 +3,16 @@ import os
 
 
 def copy_static_contents(src, dst):
-        # Check to see if destination exists.
-
-    if os.path.exists(dst):
-        # Remove dir and contents 
-
-        shutil.rmtree(dst)
-
-        # Create destination dir.
-
-    os.mkdir(dst)
-
-        # recursive logic 
-
-    if not os.path.exists(src):
-        return
+    if not os.path.exists(dst):
+        os.mkdir(dst)
         
-        # logic
     for item in os.listdir(src):
         src_item = os.path.join(src, item)
         dst_item = os.path.join(dst, item)
+        print(f"* {src_item} -> {dst_item}")
 
-        if os.path.isdir(src_item):
-            copy_static_contents(src_item, dst_item)
-        else:
+        if os.path.isfile(src_item):
             shutil.copy(src_item, dst_item)
-            print(f"Copied {src_item} to {dst_item}")
-
+        else:
+            copy_static_contents(src_item, dst_item)
 
