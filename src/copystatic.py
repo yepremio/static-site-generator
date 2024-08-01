@@ -15,4 +15,4 @@ def copy_static_contents(src, dst):
             shutil.copy(src_item, dst_item)
         else:
             copy_static_contents(src_item, dst_item)
-
+insert new function below
