@@ -16,4 +16,6 @@ def copy_static_contents(src, dst):
         else:
             copy_static_contents(src_item, dst_item)
 insert new function below
-test case for functions in module b 
+test case for functions in module b
+Additional changes to modules
+
