@@ -1,15 +1,13 @@
 
-markdown_path = "content/index.md"
-markdown = open_file(markdown_path)
-template_path = "template.html"
-template = open_file(template_path)
-
-
 def open_file(path):
     with open(path) as f:
         return f.read()
 
+markdown_path = "content/index.md"
+markdown = open_file(markdown_path)
 
+template_path = "template.html"
+template = get_template(template_path)
 
 
 def extract_title(markdown):
