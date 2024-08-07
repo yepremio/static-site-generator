@@ -1,9 +1,11 @@
 
 markdown_path = "content/index.md"
-markdown = get_markdown(markdown_path)
+markdown = open_file(markdown_path)
+template_path = "template.html"
+template = open_file(template_path)
 
 
-def get_markdown(path):
+def open_file(path):
     with open(path) as f:
         return f.read()
 
