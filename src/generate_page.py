@@ -7,7 +7,7 @@ markdown_path = "content/index.md"
 markdown = open_file(markdown_path)
 
 template_path = "template.html"
-template = get_template(template_path)
+template = open_file(template_path)
 
 
 def extract_title(markdown):
