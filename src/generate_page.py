@@ -11,6 +11,13 @@ template = open_file(template_path)
 
 
 def extract_title(markdown):
+    split_markdown = markdown.splitlines()
+    for line in split_markdown:
+        if line.startswith("#"):
+            new_line = line.replace("#", '')
+            return new_line.strip()
+    else:
+        raise Exception("Missing h1 header")
 
 
 
