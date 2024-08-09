@@ -1,3 +1,5 @@
+from markdown_blocks import markdown_to_html_node 
+import htmlnode 
 
 def open_file(path):
     with open(path) as f:
@@ -9,7 +11,6 @@ markdown = open_file(markdown_path)
 template_path = "template.html"
 template = open_file(template_path)
 
-
 def extract_title(markdown):
     split_markdown = markdown.splitlines()
     for line in split_markdown:
@@ -19,15 +20,22 @@ def extract_title(markdown):
     else:
         raise Exception("Missing h1 header")
 
-
-
 def generate_page(from_path, template_path, dest_path):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+ 
+    def open_file(path):
+        with open(path) as f:
+            return f.read()
 
-#read markdown from_path and store in variable
-#read template file at template_path and store in variable
-# markdown_to_html_node and .to_html() method to convert markdown file to an html string
-# use extract_title function to grab the title of the page.
-# replace the {{ Title }} and {{ Content }} placeholders with the html generated
-# write the new full HTML page to a file at dest_path
-#
+    markdown = open_file(from_path)
+    template = open_file(template_path)
+
+    converted_markdown = markdown_to_html_node(markdown)
+    title = extract_title(markdown)
+
+    new_template = template.replace("{{ Title }}", title)
+    new_template = new_template.replace("{{ Content }}", converted_markdown)
+    
+    with open(dest_path, 'w') as f:
+        f.write(new_template)
+
