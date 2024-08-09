@@ -1,15 +1,4 @@
 from markdown_blocks import markdown_to_html_node 
-import htmlnode 
-
-def open_file(path):
-    with open(path) as f:
-        return f.read()
-
-markdown_path = "content/index.md"
-markdown = open_file(markdown_path)
-
-template_path = "template.html"
-template = open_file(template_path)
 
 def extract_title(markdown):
     split_markdown = markdown.splitlines()
@@ -30,12 +19,13 @@ def generate_page(from_path, template_path, dest_path):
     markdown = open_file(from_path)
     template = open_file(template_path)
 
-    converted_markdown = markdown_to_html_node(markdown)
+    converted_markdown = markdown_to_html_node(markdown).to_html()
+
     title = extract_title(markdown)
 
     new_template = template.replace("{{ Title }}", title)
-    new_template = new_template.replace("{{ Content }}", converted_markdown)
+    new_new_template = new_template.replace("{{ Content }}", converted_markdown)
     
     with open(dest_path, 'w') as f:
-        f.write(new_template)
+        f.write(new_new_template)
 
