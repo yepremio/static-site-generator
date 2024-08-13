@@ -10,8 +10,6 @@ def extract_title(markdown):
         raise ValueError("Missing h1 header")
 
 # write the generative pages recursively function below
-# creates pages and directories that are missing as well.
-#
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
 
 
