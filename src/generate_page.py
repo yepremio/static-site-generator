@@ -11,6 +11,7 @@ def extract_title(markdown):
 
 # write the generative pages recursively function below
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    dir_path_content = 
 
 
 def generate_page(from_path, template_path, dest_path):
